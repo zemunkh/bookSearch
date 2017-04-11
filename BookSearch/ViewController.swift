@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var authorTextLabel: UILabel!
     
     @IBAction func buttonTapped(_ sender: Any) {
-        getBookInfo(isbn: "0553283685")
+        getBookInfo(isbn: "9781292101767")
     }
     //var title: String?
     
@@ -76,9 +76,24 @@ class ViewController: UIViewController {
                     print("###### Title is " + title)
                     self.titleTextLabel.text = title
                     }
-                if let author = volumeInfo["authors"] as? String{
-                    print("###### Author is " + author)
-                    self.authorTextLabel.text = author
+                var count = 0
+                if let author = volumeInfo["authors"] as? [String] {
+                    for _ in author {
+                        print("###### Author is " + author[count])
+                        count += 1
+                    }
+                    
+                    var name :String
+                    for _ in 0...count {
+                        if count == 0 {
+                            self.authorTextLabel.text = author[count]
+                        }
+                        else {
+                            name = author[count] + ", " + author[count + 1]
+                            self.authorTextLabel.text = name
+                        }
+
+                    }
                 }
             }
         }
