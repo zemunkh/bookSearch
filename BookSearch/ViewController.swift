@@ -7,19 +7,89 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
+
+    @IBOutlet weak var titleTextLabel: UILabel!
+    @IBOutlet weak var authorTextLabel: UILabel!
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        getBookInfo(isbn: "0553283685")
+    }
+    //var title: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //getBookInfo(isbn: "0553283685")
+        getBookInfo(isbn: "9781591840565")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func getBookInfo(isbn: String) {
+        let urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
+        if let url = URL(string: urlString) {
+            let urlRequest = URLRequest(url: url)
+            
+            //let config = URLSessionConfiguration.default
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+                
+                guard error == nil else {
+                    print("error calling Get on books")
+                    //print(error)
+                    return
+                }
+                
+                self.setLabels(responseData: data!)
+                
+            })
+        task.resume()
     }
+    
+}
+    
+    func setLabels(responseData: Data) {
+        
+        do {
+        guard let jsonResult = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
+            print("error trying to convert data to JSON")
+            return
+        }
+        print("This result is: " + jsonResult.description)
+        
+        // the book object is a dictionary
+        // so we just access the title using the "title" key
+        // so check for a title and print it if we have one
+        guard let items = jsonResult["items"] as? [[String: AnyObject]] else {
+            print("Could not get item from JSON")
+            return
+        }
+        //print("The items are: " + items.description)
+        
+        for item in items {
+            if let volumeInfo = item["volumeInfo"] as? [String: AnyObject] {
+            //print(title)
+                if let title = volumeInfo["title"] as? String{
+                    print("###### Title is " + title)
+                    self.titleTextLabel.text = title
+                    }
+                if let author = volumeInfo["authors"] as? String{
+                    print("###### Author is " + author)
+                    self.authorTextLabel.text = author
+                }
+            }
+        }
+        
+        } catch {
+            print("error trying to convert data to JSON")
+            return
+        }
 
+    }
+    
 
 }
 
