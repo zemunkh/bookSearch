@@ -80,20 +80,22 @@ class ViewController: UIViewController {
                 if let author = volumeInfo["authors"] as? [String] {
                     for _ in author {
                         print("###### Author is " + author[count])
+                        self.authorTextLabel.text = author[count]
                         count += 1
                     }
                     
-                    var name :String
-                    for _ in 0...count {
-                        if count == 0 {
-                            self.authorTextLabel.text = author[count]
-                        }
-                        else {
-                            name = author[count] + ", " + author[count + 1]
-                            self.authorTextLabel.text = name
-                        }
+//                    var name :String
+//                    for index in 0...count {
+//                        if count == 1 {
+//                            self.authorTextLabel.text = author[0]
+//                        }
+//                        else {
+//                            name = author[index]
+//                            self.authorTextLabel.text = name
+//                        }
+//
+//                    }
 
-                    }
                 }
             }
         }
