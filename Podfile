@@ -6,4 +6,5 @@ use_frameworks!
 
 target 'BookSearch' do
 	pod 'SwiftyJSON'
+    pod 'SDWebImage/WebP'
 end
