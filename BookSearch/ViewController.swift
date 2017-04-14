@@ -17,18 +17,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleTextLabel: UILabel!
     @IBOutlet weak var authorTextLabel: UILabel!
     @IBOutlet weak var descriptionTextLabel: UITextView!
+    @IBOutlet weak var isbnNumberLabel: UITextField!
+    @IBOutlet weak var publisherTextLabel: UILabel!
+    @IBOutlet weak var publishedDateLabel: UILabel!
+    
+    //var books : [Book] = []
     
     @IBAction func buttonTapped(_ sender: Any) {
-        getBookInfo(isbn: "9781292101767")
+        isbn = isbnNumberLabel.text!
+        getBookInfo(isbn: isbn)
     }
 
+    var isbn : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //getBookInfo(isbn: "0553283685")
+        getBookInfo(isbn: "9781292101767")
         
-        getBookInfo(isbn: "9781591840565")
+       
     }
     
     func getBookInfo(isbn: String) {
@@ -55,7 +62,7 @@ class ViewController: UIViewController {
     }
     
     func setLabels(responseData: Data) {
-        
+
         DispatchQueue.main.async {
             
             do {
@@ -63,7 +70,7 @@ class ViewController: UIViewController {
                     print("error trying to convert data to JSON")
                     return
                 }
-                //print("This result is: " + jsonResult.description)
+                print("This result is: " + jsonResult.description)
                 
                 guard let items = jsonResult["items"] as? [[String: AnyObject]] else {
                     print("Could not get item from JSON")
@@ -72,17 +79,18 @@ class ViewController: UIViewController {
                 
                 for item in items {
                     if let volumeInfo = item["volumeInfo"] as? [String: AnyObject] {
-                        //print(title)
                         
                         if let title = volumeInfo["title"] as? String{
                             print("###### Title is " + title)
                             self.titleTextLabel.text = title
                         }
+                        else {
+                            self.titleTextLabel.text = "Not found"
+                        }
                         var count = 0
                         if let author = volumeInfo["authors"] as? [String] {
                             for _ in author {
                                 print("###### Author is " + author[count])
-                                //self.authorTextLabel.text = author[count]
                                 count += 1
                             }
                             if count == 1 {
@@ -104,6 +112,27 @@ class ViewController: UIViewController {
                             
                             
                         }
+                        else {
+                            self.authorTextLabel.text = "Not found"
+                        }
+                        
+                        if let publisher = volumeInfo["publisher"] as? String {
+                            print("####Publisher: " + publisher)
+                            self.publisherTextLabel.text = publisher
+                        }
+                        else {
+                            self.publisherTextLabel.text = "Not found"
+                        }
+                        // Add Nothing on the label if there is no data
+                        if let publishDate = volumeInfo["publishedDate"] as? String {
+                            print("####published Date :" + publishDate)
+                            self.publishedDateLabel.text = publishDate
+                        }
+                        else {
+                            self.publishedDateLabel.text = "Not found"
+                            
+                        }
+                        
                         var url : String = ""
                         if let imageLinks = volumeInfo["imageLinks"] as? [String: AnyObject] {
                             if let smallThumbnail = imageLinks["smallThumbnail"] as? String {
@@ -117,7 +146,9 @@ class ViewController: UIViewController {
                         if let descript = volumeInfo["description"] as? String {
                             print("#####Description: " + descript)
                             self.descriptionTextLabel.text = descript
-                            
+                        }
+                        else {
+                            self.descriptionTextLabel.text = "Not found"
                         }
                         
                     }

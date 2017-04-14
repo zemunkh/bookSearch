@@ -14,6 +14,9 @@
 		A6555B991E96785A0043A3BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6555B971E96785A0043A3BC /* LaunchScreen.storyboard */; };
 		A6555BA11E967C1D0043A3BC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6555BA01E967C1D0043A3BC /* SwiftyJSON.framework */; };
 		A6555BA31E967C900043A3BC /* jsonFile.json in Resources */ = {isa = PBXBuildFile; fileRef = A6555BA21E967C900043A3BC /* jsonFile.json */; };
+		A666D48C1EA1067D000C51A0 /* ShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A666D48B1EA1067D000C51A0 /* ShelfViewController.swift */; };
+		A66746341EA0690700DD5B01 /* BookSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A66746321EA0690700DD5B01 /* BookSearch.xcdatamodeld */; };
+		A66746361EA0693300DD5B01 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66746351EA0693300DD5B01 /* CoreData.framework */; };
 		E81D7C90949BB414C75C3E88 /* Pods_BookSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F22005168362C9209065E5F /* Pods_BookSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		A6555B9A1E96785A0043A3BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6555BA01E967C1D0043A3BC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/BookSearch-bfwtinwunkluswcumpklteleaxwp/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		A6555BA21E967C900043A3BC /* jsonFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jsonFile.json; sourceTree = "<group>"; };
+		A666D48B1EA1067D000C51A0 /* ShelfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShelfViewController.swift; sourceTree = "<group>"; };
+		A66746331EA0690700DD5B01 /* BookSearch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookSearch.xcdatamodel; sourceTree = "<group>"; };
+		A66746351EA0693300DD5B01 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EB2C44E2A06D5D067C236D18 /* Pods-BookSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookSearch/Pods-BookSearch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A66746361EA0693300DD5B01 /* CoreData.framework in Frameworks */,
 				A6555BA11E967C1D0043A3BC /* SwiftyJSON.framework in Frameworks */,
 				E81D7C90949BB414C75C3E88 /* Pods_BookSearch.framework in Frameworks */,
 			);
@@ -82,6 +89,8 @@
 				A6555B971E96785A0043A3BC /* LaunchScreen.storyboard */,
 				A6555B9A1E96785A0043A3BC /* Info.plist */,
 				A6555BA21E967C900043A3BC /* jsonFile.json */,
+				A66746321EA0690700DD5B01 /* BookSearch.xcdatamodeld */,
+				A666D48B1EA1067D000C51A0 /* ShelfViewController.swift */,
 			);
 			path = BookSearch;
 			sourceTree = "<group>";
@@ -89,6 +98,7 @@
 		D982CBB5D9D62A00D8D6947E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A66746351EA0693300DD5B01 /* CoreData.framework */,
 				A6555BA01E967C1D0043A3BC /* SwiftyJSON.framework */,
 				6F22005168362C9209065E5F /* Pods_BookSearch.framework */,
 			);
@@ -220,7 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6555B911E96785A0043A3BC /* ViewController.swift in Sources */,
+				A666D48C1EA1067D000C51A0 /* ShelfViewController.swift in Sources */,
 				A6555B8F1E96785A0043A3BC /* AppDelegate.swift in Sources */,
+				A66746341EA0690700DD5B01 /* BookSearch.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +399,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A66746321EA0690700DD5B01 /* BookSearch.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A66746331EA0690700DD5B01 /* BookSearch.xcdatamodel */,
+			);
+			currentVersion = A66746331EA0690700DD5B01 /* BookSearch.xcdatamodel */;
+			path = BookSearch.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A6555B831E96785A0043A3BC /* Project object */;
 }
