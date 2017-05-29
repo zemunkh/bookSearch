@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  BookSearch
 //
 //  Created by Zorigbold  Munkh-Erdene on 06/04/2017.
@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import SwiftyJSON
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController {
 
 
     @IBOutlet weak var imageView: UIImageView!
@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var publisherTextLabel: UILabel!
     @IBOutlet weak var publishedDateLabel: UILabel!
     
-    //var books : [Book] = []
     
     @IBAction func buttonTapped(_ sender: Any) {
         isbn = isbnNumberLabel.text!
@@ -32,11 +31,27 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getBookInfo(isbn: "9781292101767")
-        
-       
+    
     }
+    
+    
+    @IBAction func addShelfButtonTapped(_ sender: Any) {
+        let context  = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let book = Book(context: context)
+        
+        book.title = titleTextLabel.text
+        book.author = authorTextLabel.text
+        book.pubDate = publishedDateLabel.text
+        book.publisher = publisherTextLabel.text
+        book.descript = descriptionTextLabel.text
+        
+        book.thumbnail = UIImagePNGRepresentation(imageView.image!) as NSData?
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        navigationController!.popViewController(animated: true)
+    }
+
     
     func getBookInfo(isbn: String) {
         let urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
@@ -45,7 +60,6 @@ class ViewController: UIViewController {
             
             //let config = URLSessionConfiguration.default
             let session = URLSession.shared
-            
             let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
                 
                 guard error == nil else {
@@ -62,9 +76,7 @@ class ViewController: UIViewController {
     }
     
     func setLabels(responseData: Data) {
-
         DispatchQueue.main.async {
-            
             do {
                 guard let jsonResult = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
                     print("error trying to convert data to JSON")
@@ -80,9 +92,9 @@ class ViewController: UIViewController {
                 for item in items {
                     if let volumeInfo = item["volumeInfo"] as? [String: AnyObject] {
                         
-                        if let title = volumeInfo["title"] as? String{
-                            print("###### Title is " + title)
-                            self.titleTextLabel.text = title
+                        if let booktitle = volumeInfo["title"] as? String {
+                            print("###### Title is " + booktitle)
+                            self.titleTextLabel.text = booktitle
                         }
                         else {
                             self.titleTextLabel.text = "Not found"
@@ -109,8 +121,6 @@ class ViewController: UIViewController {
                                 }
                                 self.authorTextLabel.text = name
                             }
-                            
-                            
                         }
                         else {
                             self.authorTextLabel.text = "Not found"
@@ -133,11 +143,11 @@ class ViewController: UIViewController {
                             
                         }
                         
-                        var url : String = ""
+                        var url : String = " "
                         if let imageLinks = volumeInfo["imageLinks"] as? [String: AnyObject] {
-                            if let smallThumbnail = imageLinks["smallThumbnail"] as? String {
-                                print("#####Thumbnail: " + smallThumbnail)
-                                url = "\(smallThumbnail).jpg"
+                            if let thumbnail = imageLinks["thumbnail"] as? String {
+                                print("#####Thumbnail: " + thumbnail)
+                                url = "\(thumbnail).jpg"
                                 self.imageView.sd_setImage(with: URL(string: url))
                             }
                             
@@ -150,11 +160,8 @@ class ViewController: UIViewController {
                         else {
                             self.descriptionTextLabel.text = "Not found"
                         }
-                        
                     }
                 }
-                
-                
                 
             } catch {
                 print("error trying to convert data to JSON")
@@ -162,5 +169,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    
 }
 
