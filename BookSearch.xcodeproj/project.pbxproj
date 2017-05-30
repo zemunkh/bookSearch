@@ -87,11 +87,11 @@
 			isa = PBXGroup;
 			children = (
 				A6555B8E1E96785A0043A3BC /* AppDelegate.swift */,
-				A6555B901E96785A0043A3BC /* SearchViewController.swift */,
 				A666D48B1EA1067D000C51A0 /* ShelfViewController.swift */,
+				A6555B901E96785A0043A3BC /* SearchViewController.swift */,
+				A6FA97D91ED925BB00486927 /* ScannerViewController.swift */,
 				A6C6114D1EA4C23800A1724E /* InfoViewController.swift */,
 				A6555B921E96785A0043A3BC /* Main.storyboard */,
-				A6FA97D91ED925BB00486927 /* ScannerViewController.swift */,
 				A6555B951E96785A0043A3BC /* Assets.xcassets */,
 				A6555B971E96785A0043A3BC /* LaunchScreen.storyboard */,
 				A6555B9A1E96785A0043A3BC /* Info.plist */,
@@ -146,6 +146,7 @@
 				TargetAttributes = {
 					A6555B8A1E96785A0043A3BC = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 5V9244S78R;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -364,6 +365,7 @@
 			baseConfigurationReference = EB2C44E2A06D5D067C236D18 /* Pods-BookSearch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5V9244S78R;
 				INFOPLIST_FILE = BookSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zemunkhCode.BookSearch;
@@ -377,6 +379,7 @@
 			baseConfigurationReference = 7352EBC0117060C4EB371A15 /* Pods-BookSearch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5V9244S78R;
 				INFOPLIST_FILE = BookSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zemunkhCode.BookSearch;

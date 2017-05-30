@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCg-mV-AmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1060" y="-54"/>
+            <point key="canvasLocation" x="-749" y="-55"/>
         </scene>
         <!--Shelf View Controller-->
         <scene sceneID="nUz-Kw-ap0">
@@ -175,13 +175,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Google Books" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFq-eL-VOW">
-                                <rect key="frame" x="93" y="72" width="198" height="36"/>
+                                <rect key="frame" x="93" y="28" width="198" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" ambiguous="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oy0-GP-1J0">
-                                <rect key="frame" x="31" y="355" width="253" height="24"/>
+                                <rect key="frame" x="31" y="311" width="253" height="24"/>
                                 <color key="backgroundColor" red="1" green="0.90127648573093355" blue="0.68781847757880288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="253" id="Ek2-QP-e6O"/>
@@ -192,14 +192,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" text="Publisher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AY-tz-JmG">
-                                <rect key="frame" x="31" y="430" width="253" height="24"/>
+                                <rect key="frame" x="31" y="386" width="253" height="68"/>
                                 <color key="backgroundColor" red="1" green="0.90127648569999996" blue="0.68781847760000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLc-yt-0Wq">
-                                <rect key="frame" x="31" y="395" width="253" height="21"/>
+                                <rect key="frame" x="31" y="351" width="253" height="21"/>
                                 <color key="backgroundColor" red="0.76876767208201224" green="0.99908632040023804" blue="0.72105920021851222" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -213,7 +213,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BxB-8h-j8R">
-                                <rect key="frame" x="31" y="116" width="165" height="223"/>
+                                <rect key="frame" x="31" y="72" width="165" height="223"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="223" id="ius-KT-nhn"/>
                                 </constraints>
@@ -228,7 +228,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ISBN search" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7VT-ix-b4e">
-                                <rect key="frame" x="204" y="116" width="155" height="30"/>
+                                <rect key="frame" x="204" y="72" width="155" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="Kdx-cn-hmm"/>
                                 </constraints>
@@ -237,7 +237,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="alert"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxi-zm-Zex">
-                                <rect key="frame" x="252" y="154" width="48" height="60"/>
+                                <rect key="frame" x="252" y="110" width="48" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2eM-o4-fBw"/>
                                 </constraints>
@@ -247,7 +247,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMe-Cs-bIV">
-                                <rect key="frame" x="234" y="293" width="94" height="46"/>
+                                <rect key="frame" x="234" y="257" width="94" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to Shelf"/>
                                 <connections>
@@ -255,7 +255,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5F4-tI-Fib">
-                                <rect key="frame" x="258" y="215" width="42" height="44"/>
+                                <rect key="frame" x="255" y="205" width="42" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="001-line"/>
                                 <connections>
@@ -292,6 +292,7 @@
                             <constraint firstItem="BxB-8h-j8R" firstAttribute="leading" secondItem="1AY-tz-JmG" secondAttribute="leading" id="yrI-Qg-3GN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="5gP-oA-MiT"/>
                     <connections>
                         <outlet property="authorTextLabel" destination="QLc-yt-0Wq" id="U0n-em-D3z"/>
                         <outlet property="descriptionTextLabel" destination="IVN-sn-Qf9" id="lGC-vk-51P"/>
@@ -336,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ruK-R8-cT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1608.8" y="-487.10644677661173"/>
+            <point key="canvasLocation" x="1756" y="-487"/>
         </scene>
     </scenes>
     <resources>

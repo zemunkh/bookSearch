@@ -9,14 +9,18 @@
 import UIKit
 import AVFoundation
 
-protocol ScannerDelegate {
-    var barcode : String { get }
-    func barcodeScanData(_: barcode)
+
+protocol ScannerViewControllerDelegate: class {
+    
+    func sendISBN(isbn: String?)
+    
 }
 
-
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-
+    
+    //Protocol part: Delegate declaration
+    weak var delegate: ScannerViewControllerDelegate?
+    
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet var topbar: UIView!
     
@@ -24,9 +28,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var videoPreviewLayer : AVCaptureVideoPreviewLayer?
     var barcodeFrameView: UIView?
     
+    var isbn: String? = nil
     
-    // I don't know exactly what is going on this protocol usage
-    var delegate: ScannerDelegate?
     
     
     override func viewDidLoad() {
@@ -103,17 +106,18 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             if metadataObj.stringValue != nil {
                 messageLabel.text = metadataObj.stringValue
-                
-                if delegate != nil {
-                    delegate?.barcodeScanData()
-                }
-                
+                isbn = messageLabel.text
+                delegate?.sendISBN(isbn: isbn)
+                _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
+                    print("#######READ ISBN######")
+                    print(self.messageLabel.text!)
+                    
+                })
+                navigationController?.popViewController(animated: true)
             }
         }
     }
 
-    
-    
     
 
 }

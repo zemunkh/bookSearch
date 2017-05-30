@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import SwiftyJSON
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, ScannerViewControllerDelegate {
 
 
     @IBOutlet weak var imageView: UIImageView!
@@ -22,20 +22,33 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var publishedDateLabel: UILabel!
     
     
+    
+    
     @IBAction func buttonTapped(_ sender: Any) {
         isbn = isbnNumberLabel.text!
         getBookInfo(isbn: isbn)
     }
-
     var isbn : String = ""
-    
+    var isbnData : String = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        getBookInfo(isbn: "9781292101767")
+        
     
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextVC = segue.destination as? ScannerViewController {
+            nextVC.isbn =  isbnNumberLabel.text
+            nextVC.delegate = self
+        }
+    }
     
+    func sendISBN(isbn: String?) {
+        getBookInfo(isbn: isbn!)
+    }
     
+
     @IBAction func addShelfButtonTapped(_ sender: Any) {
         let context  = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let book = Book(context: context)
