@@ -28,7 +28,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var videoPreviewLayer : AVCaptureVideoPreviewLayer?
     var barcodeFrameView: UIView?
     
-    var isbn: String? = nil
+    var isbnData: String? = nil
     
     
     
@@ -91,7 +91,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         // Check if Metaobjects array  is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             barcodeFrameView?.frame = CGRect.zero
-            messageLabel.text = "No QR code is detected"
+            messageLabel.text = "No ISBN is detected"
             return
         }
         
@@ -106,13 +106,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             if metadataObj.stringValue != nil {
                 messageLabel.text = metadataObj.stringValue
-                isbn = messageLabel.text
-                delegate?.sendISBN(isbn: isbn)
-                _ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
-                    print("#######READ ISBN######")
-                    print(self.messageLabel.text!)
-                    
-                })
+                isbnData = messageLabel.text
+                delegate?.sendISBN(isbn: isbnData)
+                print("#######READ ISBN######")
                 navigationController?.popViewController(animated: true)
             }
         }

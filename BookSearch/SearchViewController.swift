@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class SearchViewController: UIViewController, ScannerViewControllerDelegate {
 
+    @IBOutlet weak var addButton: UIButton!
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleTextLabel: UILabel!
@@ -29,23 +30,24 @@ class SearchViewController: UIViewController, ScannerViewControllerDelegate {
         getBookInfo(isbn: isbn)
     }
     var isbn : String = ""
-    var isbnData : String = ""
+    var found : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        addButton.isEnabled = false
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nextVC = segue.destination as? ScannerViewController {
-            nextVC.isbn =  isbnNumberLabel.text
             nextVC.delegate = self
         }
     }
     
     func sendISBN(isbn: String?) {
         getBookInfo(isbn: isbn!)
+        isbnNumberLabel.text = isbn
+
     }
     
 
@@ -81,7 +83,6 @@ class SearchViewController: UIViewController, ScannerViewControllerDelegate {
                     return
                 }
                 self.setLabels(responseData: data!)
-                
             })
             task.resume()
         }
@@ -108,9 +109,11 @@ class SearchViewController: UIViewController, ScannerViewControllerDelegate {
                         if let booktitle = volumeInfo["title"] as? String {
                             print("###### Title is " + booktitle)
                             self.titleTextLabel.text = booktitle
+                            self.addButton.isEnabled = true
                         }
                         else {
                             self.titleTextLabel.text = "Not found"
+                            self.addButton.isEnabled = false
                         }
                         var count = 0
                         if let author = volumeInfo["authors"] as? [String] {

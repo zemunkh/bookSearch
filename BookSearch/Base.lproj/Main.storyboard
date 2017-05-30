@@ -294,6 +294,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5gP-oA-MiT"/>
                     <connections>
+                        <outlet property="addButton" destination="tMe-Cs-bIV" id="e8J-mY-GM9"/>
                         <outlet property="authorTextLabel" destination="QLc-yt-0Wq" id="U0n-em-D3z"/>
                         <outlet property="descriptionTextLabel" destination="IVN-sn-Qf9" id="lGC-vk-51P"/>
                         <outlet property="imageView" destination="BxB-8h-j8R" id="gen-eb-kX5"/>
