@@ -24,7 +24,7 @@ class InfoViewController: UIViewController {
         
         
         titleTextLabel.text = nom?.title
-        imageView.image = UIImage(data: nom?.thumbnail as! Data)
+        imageView.image = UIImage(data: nom?.thumbnail as Data!)
         authorTextLabel.text = nom?.author
         publisherTextLabel.text = nom?.publisher
         pubDataTextLabel.text = nom?.pubDate

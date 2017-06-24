@@ -18,6 +18,7 @@
 		A66746341EA0690700DD5B01 /* BookSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A66746321EA0690700DD5B01 /* BookSearch.xcdatamodeld */; };
 		A66746361EA0693300DD5B01 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66746351EA0693300DD5B01 /* CoreData.framework */; };
 		A6C6114E1EA4C23800A1724E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C6114D1EA4C23800A1724E /* InfoViewController.swift */; };
+		A6CF60361EFE5BC90035B234 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6CF60351EFE5BC90035B234 /* GoogleService-Info.plist */; };
 		A6FA97DA1ED925BB00486927 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA97D91ED925BB00486927 /* ScannerViewController.swift */; };
 		E81D7C90949BB414C75C3E88 /* Pods_BookSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F22005168362C9209065E5F /* Pods_BookSearch.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		A66746331EA0690700DD5B01 /* BookSearch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookSearch.xcdatamodel; sourceTree = "<group>"; };
 		A66746351EA0693300DD5B01 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A6C6114D1EA4C23800A1724E /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		A6CF60351EFE5BC90035B234 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6FA97D91ED925BB00486927 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		EB2C44E2A06D5D067C236D18 /* Pods-BookSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BookSearch/Pods-BookSearch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 				A6555B9A1E96785A0043A3BC /* Info.plist */,
 				A6555BA21E967C900043A3BC /* jsonFile.json */,
 				A66746321EA0690700DD5B01 /* BookSearch.xcdatamodeld */,
+				A6CF60351EFE5BC90035B234 /* GoogleService-Info.plist */,
 			);
 			path = BookSearch;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				A6555B991E96785A0043A3BC /* LaunchScreen.storyboard in Resources */,
 				A6555B961E96785A0043A3BC /* Assets.xcassets in Resources */,
+				A6CF60361EFE5BC90035B234 /* GoogleService-Info.plist in Resources */,
 				A6555B941E96785A0043A3BC /* Main.storyboard in Resources */,
 				A6555BA31E967C900043A3BC /* jsonFile.json in Resources */,
 			);

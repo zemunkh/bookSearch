@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Google
+import GoogleSignIn
 
-class ShelfViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ShelfViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GIDSignInDelegate, GIDSignInUIDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    
     
     var books : [Book] = []
     
@@ -19,9 +24,42 @@ class ShelfViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        var error : NSError?
+        GGLContext.sharedInstance().configureWithError(&error)
+        
+        if error != nil {
+            print(error!)
+            return
+        }
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        
+        let signInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        signInButton.center = view.center
+        
+        view.addSubview(signInButton)
+        
+
         // Do any additional setup after loading the view.
     }
     
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        }
+        
+        print(user.profile.email)
+        print(user.profile.imageURL(withDimension: 400))
+    }
+    
+    @IBAction func didTapSignOut(_ sender: Any) {
+        GIDSignIn.sharedInstance().signOut()
+        print("Account signed out")
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         getBooks()
         tableView.reloadData()
