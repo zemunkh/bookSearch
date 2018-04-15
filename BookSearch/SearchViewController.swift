@@ -61,7 +61,7 @@ class SearchViewController: UIViewController, ScannerViewControllerDelegate {
         book.publisher = publisherTextLabel.text
         book.descript = descriptionTextLabel.text
         
-        book.thumbnail = UIImagePNGRepresentation(imageView.image!) as NSData?
+        book.thumbnail = UIImagePNGRepresentation(imageView.image!) as Data?
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)

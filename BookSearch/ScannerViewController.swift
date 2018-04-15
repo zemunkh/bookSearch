@@ -35,11 +35,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         
         do {
             // Get an instance of the AVCaptureDeviceInput class using the previous device object
-            let input = try AVCaptureDeviceInput(device: captureDevice)
+            let input = try AVCaptureDeviceInput(device: captureDevice!)
             //Initialize the captureSession object
             captureSession = AVCaptureSession()
             // set input device on capture session
@@ -49,10 +49,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             captureSession?.addOutput(captureMetadataOutput)
             
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeEAN13Code]
+            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.ean13]
             
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
             
@@ -87,7 +87,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         // Dispose of any resources that can be recreated.
     }
     
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if Metaobjects array  is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             barcodeFrameView?.frame = CGRect.zero
@@ -99,7 +99,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         let metadataObj  = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
-        if metadataObj.type == AVMetadataObjectTypeEAN13Code {
+        if metadataObj.type == AVMetadataObject.ObjectType.ean13 {
             // if the found is equal to the Barcode metadata then update the status label
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             barcodeFrameView?.frame = barCodeObject!.bounds
